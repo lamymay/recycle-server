@@ -1,6 +1,5 @@
 
 {
-	
 	"name":"页2",
 	"code":"SN001",
 	"nameEnglish":"22",
@@ -11,7 +10,5 @@
 	"note":"for test",
 	"createDate":1322131231,
 	"updateDate":121212121
-	
-	
 }
 
