@@ -1,0 +1,17 @@
+
+{
+	
+	"name":"页2",
+	"code":"SN001",
+	"nameEnglish":"22",
+	"sort":1,
+	"level":1,
+	"state":1,
+	"url":"/home2",
+	"note":"for test",
+	"createDate":1322131231,
+	"updateDate":121212121
+	
+	
+}
+
