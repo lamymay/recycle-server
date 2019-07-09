@@ -14,27 +14,23 @@ import java.util.List;
  * @since 2019/7/8 16:44
  */
 @Slf4j
-//说明， 这里持久层使用Mybatis Plus  初次使用， 本service是使用手写sql的方式去做
-@Service("menuServiceImpl")
-public class MenuServiceImpl implements MenuService {
+//说明， 这里持久层使用Mybatis Plus  初次使用，本service是使用mp方式去做
+@Service("menu2ByMpServiceImpl")
+public class Menu2ByMpServiceImpl implements MenuService {
 
     @Resource
     private MenuMapper menuMapper;
 
     @Override
     public Long save(SysMenu menu) {
-        return menuMapper.save(menu);
+        return menuMapper.insert(menu) == 1 ? menu.getId() : null;
     }
 
     @Override
     public int delete(Long id) {
-        return menuMapper.delete(id);
+        return menuMapper.deleteById(id);
     }
 
-    @Override
-    public int deleteLogical(Long id) {
-        return menuMapper.deleteLogical(id);
-    }
     @Override
     public int update(SysMenu menu) {
         return menuMapper.update(menu);
@@ -42,12 +38,18 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public SysMenu get(Long id) {
-        return menuMapper.get(id);
+        return menuMapper.selectById(id);
     }
 
     @Override
+    public int deleteLogical(Long id) {
+        return 0;
+    }
+
+
+    @Override
     public int saveBatch(List<SysMenu> menus) {
-        return  menuMapper.saveBatch(menus);
+        return 0;
     }
 
     @Override

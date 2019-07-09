@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 @MapperScan("com.arc.recycle.mapper.system")
 @SpringBootApplication(exclude = {
 //        DataSourceAutoConfiguration.class,
+        //以为common包中引入了 mongo的依赖而本项目是不需要的，这里需求排除
         MongoAutoConfiguration.class
 })
 public class RecycleGarbageApplication {

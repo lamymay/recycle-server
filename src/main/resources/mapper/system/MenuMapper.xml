@@ -16,7 +16,7 @@
         <result property="note" column="m_note" javaType="string" jdbcType="VARCHAR"/>
         <result property="systemId" column="m_system_id" javaType="long" jdbcType="BIGINT"/>
         <result property="createDate" column="m_create_date" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-        <result property="updateDate" column="m_update_date" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP"/>
+        <result property="updateDate" column="m_update_date"/>
     </resultMap>
 
     <sql id="sqlMenuColumns">
@@ -35,6 +35,15 @@
 		m_.create_date AS m_create_date,
 		m_.update_date AS m_update_date
 	</sql>
+
+    <delete id="delete" parameterType="long">
+        DELETE sys_menu WHERE id =#{id}
+    </delete>
+
+    <!--逻辑删除-->
+    <update id="deleteLogical" parameterType="long">
+        UPDATE sys_menu   `state` = 0     WHERE id = #{id}
+    </update>
 
     <select id="get" parameterType="long" resultMap="menu">
         SELECT
@@ -75,6 +84,22 @@
 			#{updateDate,jdbcType=TIMESTAMP}
 		)
 	</insert>
+
+    <insert id="saveBatch" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sys_menu (
+        code, `name`, name_english,
+        parent_id, `sort`, `level`,
+        `state`, url, icon,
+        note, system_id, update_date )
+        VALUES
+        <foreach collection="menus" item="item" index="index" separator=",">
+            ( #{item.code},#{item.name},#{item.nameEnglish},
+            #{item.parentId},#{item.sort},#{item.level},
+            #{item.state},#{item.url},#{item.icon},
+            #{item.note},#{item.systemId}, now())
+        </foreach>
+    </insert>
+
 
     <update id="update" parameterType="com.arc.model.domain.system.SysMenu">
         UPDATE sys_menu

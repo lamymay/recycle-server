@@ -1,0 +1,245 @@
+
+{
+	"name":"页2",
+	"code":"SN001",
+	"nameEnglish":"22",
+	"sort":1,
+	"level":1,
+	"state":1,
+	"url":"/home2",
+	"note":"for test",
+	"createDate":1322131231,
+	"updateDate":121212121
+}
+
+
+时间片没用完就yield了，死循环的进程会用满时间片， 状态总是ready to run, 因为没有机会进入内核来切换到其他状态(不被调度)，两方面的因素1，时间片用满，2， 被调度的概率最高。自然使用率自然就上来了。
+注: idle用词不当，改为[u]wait in kernel,[/u] 感谢楼下的提醒。
+你可以理解成，死循环完整的占用了时间片，大多数情况下，其他过程并不需要完整的占用时间片。
+如果你在循環中調用了sleep之類的函數出讓CPU時間片, 則不會占用那么多
+
+
+
+
+
+有多少SKU？ 4个
+名称
+英文名称
+颜色
+符号
+
+描述：可回收物收集容器为蓝色，有害垃圾收集容器为红色，餐厨垃圾收集容器为绿色，其他垃圾收集容器为灰色。
+
+
+laws and regulations 法律法规
+
+垃圾分类收集与收费 Sorted Collection and Charging
+垃圾分类回收classified garbage collection
+
+
+对于物品（我们系统中叫日常用品，对应表为daily_necessities）
+物品与种类的关系，是什么某垃圾是什么种类嘛--
+往表结构上讲叫，种类表一对多对应物品表
+
+可不可以多对多呢？ 要是种类自己带细分，如：可回收废弃物 对应--纸类 塑料类 玻璃 金属 ....
+那么一个物品就有可能对应不止一个类别了，往简单点设计就是，物品对应每一大类（每一层）种类都是只对应一个
+
+分类信息处理（暂时只上，物品--种类  一对一。种类维护可以预先录入）
+
+category        类别
+
+可回收物
+有害垃圾
+有机垃圾
+固体垃圾
+液体垃圾
+
+
+
+
+
+生活垃圾一般垃圾分类标准
+
+进行“四分类”。
+可回收物、       可回收物收集容器为蓝色
+有害垃圾、       有害垃圾收集容器为红色
+餐厨垃圾、       餐厨垃圾收集容器为绿色
+其他垃圾           其他垃圾收集容器为灰色
+
+
+可回收物就是再生资源，指生活垃圾中未经污染、适宜回收循环利用的废物，主要包括废弃电器电子产品、废纸张、废塑料、废玻璃、废金属等五类，是现阶段生活垃圾分类的主要工作和影响垃圾减量的重要因素。
+
+（一）电器电子产品类
+废弃计算机、打印机、复印件、传真机、扫描仪、投影仪、电视机、空调机等。
+
+（二）纸类
+1、平面纸张：报纸、复印纸、宣传单、包装纸、信封、硬纸板等；
+2、纸盒（箱）：纸板箱、包装盒（如点心盒、纸巾盒）、牛奶（饮料）利乐包装等。
+
+（三）塑料类
+1、瓶类：PET塑料瓶（矿泉水瓶、饮料瓶）、硬质塑料瓶；
+2、其他容器类：塑料盒（如冰激凌盒）、塑料杯（如酸奶杯、果冻杯）、软桶等；
+3、包装类：塑料袋、保鲜袋（膜）、包装袋（如零食包装袋、快递包装袋）、塑料泡沫、气泡缓冲材料、水果网套、热饮（如咖啡杯）杯盖等；
+4、其他塑料制品：废弃塑料文具等。
+
+（四）玻璃类
+玻璃瓶、白炽灯泡、碎玻璃、其他玻璃制品。
+
+（五）金属类
+金属罐（如易拉罐）、金属盒、其他金属制品、金属文件柜。
+
+（六）办公用品类
+沙发、茶几、办公桌、文件柜、椅子等办公家具。
+
+
+
+可回收物、       可回收物收集容器为蓝色
+有害垃圾、       有害垃圾收集容器为红色
+餐厨垃圾、       餐厨垃圾收集容器为绿色
+其他垃圾           其他垃圾收集容器为灰色【固体垃圾/液体垃圾】
+
+# menu 批量保存菜单测试数据
+[
+    {
+        "code":"NO0001",
+        "name":"可回收物",
+        "nameEnglish":"Recyclable Rubbish",
+        "sort":1,
+        "state":1,
+        "level":1,
+        "systemId":1,
+        "url":"/recyclableRubbish",
+        "note":"那些可以重复再利用的，都可以称为可回收垃圾，比如纸张，金属，家具，还有一些有机垃圾都可以回收再利用。",
+        "createDate":1562662312065,
+        "updateDate":1562662312065
+    },
+    {
+        "code":"NO0002",
+        "name":"有害垃圾",
+        "nameEnglish":"Hazardous Waste",
+        "sort":2,
+        "level":1,
+        "state":1,
+        "systemId":1,
+        "url":"/recyclableRubbish",
+        "note":"那些易燃的，有毒的，腐蚀性的，放射性的，都属于危险垃圾。这些垃圾既污染环境，对人体也有害，所以回收处理时一定要格外注意。",
+        "createDate":1562662312065,
+        "updateDate":1562662312065
+    },
+    {
+        "code":"NO0003",
+        "name":"有机垃圾",
+        "nameEnglish":"Recyclable Rubbish",
+        "sort":3,
+        "level":1,
+        "state":1,
+        "systemId":1,
+        "url":"/recyclableRubbish",
+        "note":"bbish",
+        "createDate":1562662312065,
+        "updateDate":1562662312065
+    },
+    {
+        "code":"NO0004",
+        "name":"其他垃圾(固体垃圾)",
+        "nameEnglish":"Organic Waste",
+        "sort":4,
+        "level":1,
+        "state":1,
+        "systemId":1,
+        "url":"/recyclableRubbish",
+        "note":"很多有机垃圾都来自家庭日常，比如食物残余，植物垃圾，肥料，腐肉等等都属于有机垃圾。时间长了，有机垃圾会产生甲烷（易燃易爆气体），所以有机垃圾绝对不能跟其他垃圾一并丢弃。",
+        "createDate":1562662312065,
+        "updateDate":1562662312065
+    },
+    {
+        "code":"NO0005",
+        "name":"其他垃圾(液体垃圾)",
+        "nameEnglish":"Liquid Waste",
+        "sort":5,
+        "level":1,
+        "state":1,
+        "systemId":1,
+        "url":"/recyclableRubbish",
+        "note":"Liquid waste is commonly found both in households as well as in industries. This waste includes dirty water, organic liquids, wash water, waste detergents and even rainwater.",
+        "createDate":1562662312065,
+        "updateDate":1562662312065
+    }
+]
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+
+# category 保存种类测试数据
+{
+	"code":"NO0001",
+	"name":"可回收物",
+	"nameEnglish":"Recyclable Rubbish",
+	"sort":1,
+	"state":1,
+	"level":1,
+	"url":"/recyclableRubbish",
+	"note":"那些可以重复再利用的，都可以称为可回收垃圾，比如纸张，金属，家具，还有一些有机垃圾都可以回收再利用。",
+	"noteEnglish":"Recyclable rubbish includes all waste items that can be converted into products that can be used again. Solid items such as paper, metals, furniture and organic waste can all be recycled.",
+	"createDate":1562662312065,
+	"updateDate":1562662312065
+}
+,
+{
+	"code":"NO0002",
+	"name":"有害垃圾",
+	"nameEnglish":"Hazardous Waste",
+	"sort":2,
+	"level":1,
+	"state":1,
+	"url":"/recyclableRubbish",
+	"note":"那些易燃的，有毒的，腐蚀性的，放射性的，都属于危险垃圾。这些垃圾既污染环境，对人体也有害，所以回收处理时一定要格外注意。",
+	"noteEnglish":"Hazardous waste includes all types of rubbish that are flammable, toxic, corrosive and reactive. These items can harm you as well as the environment and must be disposed of correctly.",
+	"createDate":1562662312065,
+	"updateDate":1562662312065
+}
+
+,
+{
+	"code":"NO0003",
+	"name":"有机垃圾",
+	"nameEnglish":"Recyclable Rubbish",
+	"sort":3,
+	"level":1,
+	"state":1,
+	"url":"/recyclableRubbish",
+	"note":"很多有机垃圾都来自家庭日常，比如食物残余，植物垃圾，肥料，腐肉等等都属于有机垃圾。时间长了，有机垃圾会产生甲烷（易燃易爆气体），所以有机垃圾绝对不能跟其他垃圾一并丢弃。",
+    "noteEnglish":"Solid rubbish can include a variety of items found in your household along with commercial and industrial locations. Solid rubbish is commonly broken down into the following types: plastic waste, paper waste, tins and metals, ceramics and glass.",
+"note":"bbish",
+	"createDate":1562662312065,
+	"updateDate":1562662312065
+}
+
+,
+{
+	"code":"NO0004",
+	"name":"其他垃圾(固体垃圾)",
+	"nameEnglish":"Organic Waste",
+	"sort":4,
+	"level":1,
+	"state":1,
+	"url":"/recyclableRubbish",
+	"note":"很多有机垃圾都来自家庭日常，比如食物残余，植物垃圾，肥料，腐肉等等都属于有机垃圾。时间长了，有机垃圾会产生甲烷（易燃易爆气体），所以有机垃圾绝对不能跟其他垃圾一并丢弃。",
+	"noteEnglish":"Organic waste is another common household. All food waste, garden waste, manure and rotten meat are classified as organic waste. Over time, organic waste causes the production of methane, so it must never be simply discarded with general waste.",
+	"createDate":1562662312065,
+	"updateDate":1562662312065
+}
+,
+{
+	"code":"NO0005",
+	"name":"其他垃圾(液体垃圾)",
+	"nameEnglish":"Liquid Waste",
+	"sort":5,
+	"level":1,
+	"state":1,
+	"url":"/recyclableRubbish",
+	"note":"液体垃圾",
+	"noteEnglish":"Liquid waste is commonly found both in households as well as in industries. This waste includes dirty water, organic liquids, wash water, waste detergents and even rainwater.",
+	"createDate":1562662312065,
+	"updateDate":1562662312065
+}
+

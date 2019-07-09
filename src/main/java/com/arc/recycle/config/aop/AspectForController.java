@@ -23,7 +23,7 @@ public class AspectForController {
     /**
      * 切点
      */
-    @Pointcut("execution(public * com.arc.recycle.controller.*.*.*Controller.*(..))")
+    @Pointcut("execution(public * com.arc.recycle.controller.*.*Controller.*(..))")
     public void pointcut() {
     }
 
