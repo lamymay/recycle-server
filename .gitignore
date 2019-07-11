@@ -2,6 +2,7 @@
 target/
 *.bak
 log/
+*.log
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###

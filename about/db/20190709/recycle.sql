@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 08/07/2019 23:11:34
+ Date: 09/07/2019 17:26:00
 */
 
 SET NAMES utf8mb4;
@@ -30,7 +30,7 @@ CREATE TABLE `category`  (
   `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '图标',
   `icon_full` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '图标大图',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of category
@@ -73,7 +73,7 @@ CREATE TABLE `laws_regulation`  (
   `area_code` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '适用地区编码',
   `area_name` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '适用地区名称',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '法律法规' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '法律法规' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of laws_regulation
@@ -114,12 +114,15 @@ CREATE TABLE `sys_menu`  (
   `update_date` timestamp(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `inx_name`(`name`) USING BTREE COMMENT '名称索引'
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
-INSERT INTO `sys_menu` VALUES (1, 'SN001', '首页', 'home', 1, NULL, 1, 1, '/home', NULL, 'for test', NULL, '2019-07-08 17:47:43', '2019-07-08 17:47:43');
-INSERT INTO `sys_menu` VALUES (2, 'SN001', '页2', '22', 1, NULL, 1, 1, '/home2', NULL, 'for test', NULL, '2019-07-08 17:47:43', '2019-07-08 17:47:43');
+INSERT INTO `sys_menu` VALUES (1, 'NO0001', '可回收物', 'Recyclable Rubbish', 1, NULL, 1, 1, '/recyclableRubbish', NULL, '那些可以重复再利用的，都可以称为可回收垃圾，比如纸张，金属，家具，还有一些有机垃圾都可以回收再利用。', 1, NULL, '2019-07-09 17:18:19');
+INSERT INTO `sys_menu` VALUES (2, 'NO0002', '有害垃圾', 'Hazardous Waste', 2, NULL, 1, 1, '/recyclableRubbish', NULL, '那些易燃的，有毒的，腐蚀性的，放射性的，都属于危险垃圾。这些垃圾既污染环境，对人体也有害，所以回收处理时一定要格外注意。', 1, NULL, '2019-07-09 17:18:19');
+INSERT INTO `sys_menu` VALUES (3, 'NO0003', '有机垃圾', 'Recyclable Rubbish', 3, NULL, 1, 1, '/recyclableRubbish', NULL, 'bbish', 1, NULL, '2019-07-09 17:18:19');
+INSERT INTO `sys_menu` VALUES (4, 'NO0004', '其他垃圾(固体垃圾)', 'Organic Waste', 4, NULL, 1, 1, '/recyclableRubbish', NULL, '很多有机垃圾都来自家庭日常，比如食物残余，植物垃圾，肥料，腐肉等等都属于有机垃圾。时间长了，有机垃圾会产生甲烷（易燃易爆气体），所以有机垃圾绝对不能跟其他垃圾一并丢弃。', 1, NULL, '2019-07-09 17:18:19');
+INSERT INTO `sys_menu` VALUES (5, 'NO0005', '其他垃圾(液体垃圾)', 'Liquid Waste', 5, NULL, 1, 1, '/recyclableRubbish', NULL, 'Liquid waste is commonly found both in households as well as in industries. This waste includes dirty water, organic liquids, wash water, waste detergents and even rainwater.', 1, NULL, '2019-07-09 17:18:19');
 
 SET FOREIGN_KEY_CHECKS = 1;

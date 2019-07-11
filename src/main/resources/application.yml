@@ -4,6 +4,8 @@ spring:
   profiles:
     active: dev
 
+log:
+  dir: ./log
 
 mybatis-plus:
   mapper-locations: classpath:mapper/*/*.xml

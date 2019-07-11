@@ -35,6 +35,7 @@ public class MenuServiceImpl implements MenuService {
     public int deleteLogical(Long id) {
         return menuMapper.deleteLogical(id);
     }
+
     @Override
     public int update(SysMenu menu) {
         return menuMapper.update(menu);
@@ -47,12 +48,12 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public int saveBatch(List<SysMenu> menus) {
-        return  menuMapper.saveBatch(menus);
+        return menuMapper.saveBatch(menus);
     }
 
     @Override
     public List<SysMenu> listAllMenuWithSystemIdAndLevel(Integer systemId, Integer level) {
-        return null;
+        return menuMapper.listAllMenuWithSystemIdAndLevel(systemId, level);
     }
 
     @Override

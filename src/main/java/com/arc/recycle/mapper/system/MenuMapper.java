@@ -20,7 +20,8 @@ public interface MenuMapper extends BaseMapper<SysMenu> {
 
     int update(SysMenu menu);
 
-    /**·
+    /**
+     * ·
      * 主键查询
      *
      * @param id
@@ -43,6 +44,8 @@ public interface MenuMapper extends BaseMapper<SysMenu> {
      * @return
      */
     int saveBatch(@Param("menus") List<SysMenu> menus);
+
+    List<SysMenu> listAllMenuWithSystemIdAndLevel(@Param("systemId") Integer systemId, @Param("level") Integer level);
 
     //    List<SysMenu> list();
 

@@ -52,6 +52,13 @@
         WHERE m_.id = #{id,jdbcType=BIGINT}
     </select>
 
+    <select id="listAllMenuWithSystemIdAndLevel" resultMap="menu">
+        SELECT
+        <include refid="sqlMenuColumns"/>
+        FROM sys_menu m_
+        WHERE m_.system_id = #{systemId} AND m_.level=#{level}
+    </select>
+
     <insert id="save" parameterType="com.arc.model.domain.system.SysMenu" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO sys_menu (
 			code,
